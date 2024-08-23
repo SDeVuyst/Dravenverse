@@ -1,0 +1,54 @@
+services:
+
+  web:
+    build: .
+    pull_policy: build
+    restart: always
+    command: gunicorn dravenverse.wsgi:application --bind 0.0.0.0:8000
+    env_file: stack.env
+
+    volumes:
+      # - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    working_dir: /app
+
+  db:
+    image: postgres:16
+    container_name: dravenverse_db
+    restart: always
+    env_file: stack.env
+
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    expose:
+      - "5433"
+    ports:
+      - 5433:5433
+
+  backup:
+    image: eeshugerman/postgres-backup-s3:16
+    env_file: stack.env
+    restart: always
+    environment:
+      SCHEDULE: '@daily'
+      BACKUP_KEEP_DAYS: 14
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_date:
+  media_volume:
+  static_volume:

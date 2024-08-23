@@ -1,0 +1,25 @@
+// Remove the unit of a length
+// @param {number} $number - Number to remove unit from
+// @return {number} - Unitless number
+@function strip-unit( $number ) {
+  @if type-of( $number ) == 'number' and not unitless( $number ) {
+    @return $number / ( $number * 0 + 1 );
+  }
+
+  @return $number;
+}
+
+// Converts px to rem
+// @param {number|list} $value - number or list in px
+// @return {number|list} - number or list in rem
+@function px-to-rem( $values... ) {
+  @if length( $values ) == 1 {
+    @return strip-unit( nth( $values, 1 ) ) / 16 * 1rem;
+  } @else {
+    $result: ();
+    @each $value in $values {
+      $result: append( $result, strip-unit( $value ) / 16 * 1rem );
+    }
+    @return $result;
+  }
+}

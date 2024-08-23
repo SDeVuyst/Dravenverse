@@ -1,0 +1,10 @@
+Django
+psycopg2
+django-dbbackup 
+boto3
+django-storages
+django-unfold
+django-simple-history
+django-ckeditor
+gunicorn
+pillow

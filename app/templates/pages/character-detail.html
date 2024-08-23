@@ -1,0 +1,98 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+{% load static %}
+
+    <div class="page">
+      {% include 'blocks/header.html' %}
+
+      <!-- Breadcrumbs-->
+      <section class="breadcrumbs-modern box-transform-wrap bg-image context-dark breadcrumbs-modern-2" style="background-image: url({{ character.banner.url }});">
+        <div class="container">
+          <div class="breadcrumbs-modern-body">
+            <h5 class="breadcrumbs-modern-subtitle">{{ character.role }}</h5>
+            <h1 class="breadcrumbs-modern-title">{{ character.name }}</h1>
+          </div>
+          <ul class="breadcrumbs-path breadcrumbs-modern-path">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'characters' %}">Characters</a></li>
+            <li class="active">{{ character.name }}</li>
+          </ul>
+        </div>
+      </section>
+      <!-- Section-->
+      <section class="section section-xl bg-gray-700 text-md-left">
+        <div class="container">
+          <div class="row row-40">
+
+            <div class="col-lg-8">
+              <h3>Description</h3>
+              <p class="offset-lg-30 text-width-xl-90">{{ character.description_short }}</p>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+              <h3>Skills</h3>
+              <!-- Linear progress bar-->
+              <article class="progress-linear progress-linear-2">
+                <div class="progress-header">
+                  <p class="progress-header-title">Attack</p><span class="progress-value">{{ character.attack_stats }}</span>
+                </div>
+                <div class="progress-bar-linear-wrap">
+                  <div class="progress-bar-linear"></div>
+                </div>
+              </article>
+              <!-- Linear progress bar-->
+              <article class="progress-linear progress-linear-2">
+                <div class="progress-header">
+                  <p class="progress-header-title">Defense</p><span class="progress-value">{{ character.defense_stats }}</span>
+                </div>
+                <div class="progress-bar-linear-wrap">
+                  <div class="progress-bar-linear"></div>
+                </div>
+              </article>
+              <!-- Linear progress bar-->
+              <article class="progress-linear progress-linear-2">
+                <div class="progress-header">
+                  <p class="progress-header-title">Intelligence</p><span class="progress-value">{{ character.intelligence_stats }}</span>
+                </div>
+                <div class="progress-bar-linear-wrap">
+                  <div class="progress-bar-linear"></div>
+                </div>
+              </article>
+              <!-- Linear progress bar-->
+              <article class="progress-linear progress-linear-2">
+                <div class="progress-header">
+                  <p class="progress-header-title">Speed</p><span class="progress-value">{{ character.speed_stats }}</span>
+                </div>
+                <div class="progress-bar-linear-wrap">
+                  <div class="progress-bar-linear"></div>
+                </div>
+              </article>
+              <!-- Linear progress bar-->
+              <article class="progress-linear progress-linear-2">
+                <div class="progress-header">
+                  <p class="progress-header-title">HP</p><span class="progress-value">{{ character.hp_stats }}</span>
+                </div>
+                <div class="progress-bar-linear-wrap">
+                  <div class="progress-bar-linear"></div>
+                </div>
+              </article>
+            </div>
+            
+          </div>
+
+          <div class="row row-40">
+            <div class="col-lg-12">
+              <h3>Backstory</h3>
+              <p class="offset-lg-30 text-width-xl-90">{{ character.backstory|safe }}</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {% include 'blocks/footer.html' %}
+    </div>
+
+{% endblock %}

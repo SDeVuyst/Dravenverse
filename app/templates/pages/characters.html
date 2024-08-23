@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="page">
+    {% include 'blocks/header.html' %}
+
+    <!-- Breadcrumbs-->
+    <section class="breadcrumbs-modern box-transform-wrap bg-image context-dark" style="background-image: url(/static/images/bg-breadcrumbs.jpg);">
+    <div class="container">
+        <div class="breadcrumbs-modern-body">
+        <h5 class="breadcrumbs-modern-subtitle"></h5>
+        <h1 class="breadcrumbs-modern-title">Team</h1>
+        </div>
+        <ul class="breadcrumbs-path breadcrumbs-modern-path">
+        <li><a href="{% url 'index'%}">Home</a></li>
+        <li class="active">Characters</li>
+        </ul>
+    </div>
+    <div class="box-transform" style="background-image: url(static/images/bg-breadcrumbs.jpg);"></div>
+    <div class="comets comets-left"></div>
+    <div class="comets comets-center"></div>
+    <div class="comets comets-top"></div>
+    </section>
+    <!-- Our Astrologers-->
+    <section class="section section-lg bg-default">
+    <div class="container">
+        <h2 class="wow fadeInUp">Our Characters</h2>
+        <div class="row row-xl row-40">
+        
+        {% for character in characters %}
+            <div class="col-sm-6 wow fadeInLeft" data-wow-delay=".1s">
+                <article class="team-creative">
+                <div class="unit unit-spacing-xl flex-column flex-lg-row">
+                    <div class="unit-left"><a class="team-creative-figure" href="{% url 'character' slug=character.slug %}"><img src="{{ character.image.url }}" alt="" width="140" height="140"/></a></div>
+                    <div class="unit-body">
+                    <h3 class="team-creative-name"><a href="{% url 'character' slug=character.slug %}">{{ character.name }}</a></h3>
+                    <h5 class="team-creative-status">{{ character.role }}</h5>
+                    <p class="team-creative-text">{{ character.description_short }}</p>
+                    <a class="button button-2 button-secondary-2 button-icon button-icon-left" href="{% url 'character' slug=character.slug %}"><span class="icon mdi mdi-arrow-right"></span><span>Learn More</span></a>
+                    </div>
+                </div>
+                </article>
+            </div>
+        {% endfor %}
+
+        </div>
+    </div>
+    </section>
+
+    {% include 'blocks/footer.html' %}
+</div>
+
+{% endblock %}

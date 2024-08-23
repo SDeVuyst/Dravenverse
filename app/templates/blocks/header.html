@@ -1,0 +1,32 @@
+{% load static %}
+
+<!-- Page Header-->
+<header class="section page-header">
+<!-- RD Navbar-->
+<div class="rd-navbar-wrap">
+    <nav class="rd-navbar rd-navbar-creative" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="50px" data-xl-stick-up-offset="60px" data-xxl-stick-up-offset="60px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+    <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+    <div class="rd-navbar-main-outer">
+        <div class="rd-navbar-main">
+        <!-- RD Navbar Panel-->
+        <div class="rd-navbar-panel">
+            <!-- RD Navbar Toggle-->
+            <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+            <!-- RD Navbar Brand-->
+            <div class="rd-navbar-brand"><a class="brand" href="{% url 'index' %}"><img class="brand-logo-dark" src="{% static 'images/logo-default-171x40.png' %}" alt="" width="171" height="40"/><img class="brand-logo-light" src="{% static 'images/logo-inverse-171x40.png' %}" alt="" width="171" height="40"/></a>
+            </div>
+        </div>
+        <div class="rd-navbar-nav-wrap">
+            <!-- RD Navbar Nav-->
+            <ul class="rd-navbar-nav">
+            <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'index' %}">Home</a></li>
+            <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'news' %}">News</a></li>
+            <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'characters' %}">Characters</a></li>
+            <li class="rd-nav-item"><a class="rd-nav-link" href="{% url 'lore' %}">Lore</a></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    </nav>
+</div>
+</header>
