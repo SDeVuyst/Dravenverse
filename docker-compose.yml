@@ -8,7 +8,7 @@ services:
     env_file: stack.env
 
     volumes:
-      - .:/app
+      # - .:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     ports:
