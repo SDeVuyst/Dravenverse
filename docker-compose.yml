@@ -5,7 +5,7 @@ services:
     image: nginx:alpine
     restart: always
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - nginx_volume:/etc/nginx
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     ports:
@@ -51,5 +51,6 @@ services:
 
 volumes:
   postgres_data:
+  nginx_volume: ./nginx
   media_volume:
   static_volume:
