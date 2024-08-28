@@ -1,17 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.template.response import TemplateResponse
 
-from .models import Character
+from .models import Character, Article
 
 
 def index(request):
-    context = {}
+    context = {
+        'articles': Article.objects.all()[:6]
+    }
     return TemplateResponse(request, 'pages/index.html', context)
 
 
 def news(request):
-    context = {}
+    context = {
+        'articles': Article.objects.all()
+    }
     return TemplateResponse(request, 'pages/news.html', context)
+
+
+def article(request, article_id):
+    context = {
+        "article": get_object_or_404(Article, pk=article_id)
+    }
+    return TemplateResponse(request, 'pages/article_detail.html', context)
 
 
 def characters(request):

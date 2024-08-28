@@ -26,9 +26,17 @@
         <div class="container">
           <div class="row row-40">
 
-            <div class="col-lg-8">
+            <div class="col-lg-4">
               <h3>Description</h3>
               <p class="offset-lg-30 text-width-xl-90">{{ character.description_short }}</p>
+            </div>
+
+            <div class="col-lg-4">
+              <h3>Info</h3>
+              <ul>
+                <li>Age: {{ character.age }}</li>
+                <li>Birthplace: {{ character.birthplace|safe }}</li>
+              </ul>
             </div>
 
             <div class="col-md-6 col-lg-4">

@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+{% load static %}
+    <div class="page">
+      <!-- Page Header-->
+      {% include 'blocks/header.html' %}
+      <!-- Breadcrumbs-->
+      <section class="breadcrumbs-modern box-transform-wrap bg-image context-dark" style="background-image: url(images/bg-breadcrumbs.jpg);">
+        <div class="container">
+          <div class="breadcrumbs-modern-body">
+            <h5 class="breadcrumbs-modern-subtitle"></h5>
+            <h1 class="breadcrumbs-modern-title">Articles</h1>
+          </div>
+          <ul class="breadcrumbs-path breadcrumbs-modern-path">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Articles</li>
+          </ul>
+        </div>
+        <div class="box-transform" style="background-image: url(images/bg-breadcrumbs.jpg);"></div>
+        <div class="comets comets-left"></div>
+        <div class="comets comets-center"></div>
+        <div class="comets comets-top"></div>
+      </section>
+    
+      <!-- Section Posts-->
+      <section class="section section-xl bg-default">
+        <div class="container">
+          <div class="row row-xl row-30 row-md-40 row-lg-60">
+
+            {% for article in articles %}
+            <div class="col-sm-6 col-lg-4 wow fadeInUp" data-wow-delay=".1s">
+            <!-- Post Modern-->
+            <article class="post post-modern box-md"><a class="post-modern-figure" href="/news/{{ article.pk }}"><img src="{{ article.image.url }}" alt="" width="370" height="270"/></a>
+                <h5 class="post-modern-tag">{{ article.type }}</h5>
+                <h3 class="post-modern-title"><a href="/news/{{ article.pk }}">{{ article.title }}</a></h3>
+                <p class="post-modern-text">{{ article.short_intro }}</p><a class="button button-2 button-secondary-2 button-icon button-icon-left" href="/news/{{ article.pk }}"><span class="icon mdi mdi-arrow-right"></span><span>Read more</span></a>
+            </article>
+            </div>
+            {% endfor %}
+
+
+          </div>
+          
+        </div>
+      </section>
+
+      {% include 'blocks/footer.html' %}
+      
+    </div>
+
+    {% endblock %}

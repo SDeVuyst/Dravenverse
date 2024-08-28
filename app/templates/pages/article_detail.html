@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+{% load static %}
+    <div class="page">
+    {% include 'blocks/header.html' %}
+
+      <!-- Breadcrumbs-->
+      <section class="breadcrumbs-modern box-transform-wrap bg-image context-dark" style="background-image: url(images/bg-breadcrumbs.jpg);">
+        <div class="container">
+          <div class="breadcrumbs-modern-body">
+            <h5 class="breadcrumbs-modern-subtitle"></h5>
+            <h1 class="breadcrumbs-modern-title">{{ article.title }} </h1>
+          </div>
+          <ul class="breadcrumbs-path breadcrumbs-modern-path">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="/news">Articles</a></li>
+            <li class="active">{{ article.title }}</li>
+          </ul>
+        </div>
+        <div class="box-transform" style="background-image: url(images/bg-breadcrumbs.jpg);"></div>
+        <div class="comets comets-left"></div>
+        <div class="comets comets-center"></div>
+        <div class="comets comets-top"></div>
+      </section>
+      <!-- Section Post-->
+      <section class="section section-xs section-first bg-default text-md-left">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-lg-10 col-xl-8 single-post">
+              
+                <div class="post-big">
+                <div class="post-big-top-panel group-middle">
+                  <div class="post-big-author">by <a href="#">{{ article.author }}</a></div>
+                  <time class="post-big-time" datetime="2020-07-03">{{ article.created}}</time>
+                  <div class="post-big-tags"><a href="#">{{ article.type }}</a>
+                  </div>
+                </div>
+                <p class="bigger post-big-text">
+                    {{ article.content|safe}}
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {% include 'blocks/footer.html' %}
+    </div>
+{% endblock %}

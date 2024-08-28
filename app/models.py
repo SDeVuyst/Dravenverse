@@ -5,6 +5,9 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Character(models.Model):
+    def __str__(self) -> str:
+        return self.name
+    
     name = models.TextField(verbose_name="Name")
     image = models.ImageField(verbose_name="Image", upload_to="dravenverse")
     banner = models.ImageField(verbose_name="Banner", upload_to="dravenverse")
@@ -23,5 +26,16 @@ class Character(models.Model):
 
     history = HistoricalRecords(verbose_name="History")
 
-class Stats(models.Model):
-    pass
+
+class Article(models.Model):
+    title = models.TextField(verbose_name="Title")
+    short_intro = models.TextField(verbose_name="Short Intro")
+    author = models.ForeignKey(Character, verbose_name="Author", on_delete=models.CASCADE)
+    image = models.ImageField(verbose_name="Image", upload_to="dravenverse")
+    content = RichTextField(verbose_name="Content")
+    type = models.TextField(verbose_name="Type")
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    history = HistoricalRecords(verbose_name="History")
+    

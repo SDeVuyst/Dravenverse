@@ -201,6 +201,12 @@ UNFOLD = {
                         "link": "/admin/app/character/",
                     },
 
+                    {
+                        "title": "Articles",
+                        "icon": "newspaper",
+                        "link": "/admin/app/article/",
+                    },
+
                 ],
             },
 
