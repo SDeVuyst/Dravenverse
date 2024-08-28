@@ -49,6 +49,6 @@ services:
       - "82:82"
 
 volumes:
-  postgres_date:
+  postgres_data:
   media_volume:
   static_volume:
