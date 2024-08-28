@@ -51,6 +51,6 @@ services:
 
 volumes:
   postgres_data:
-  nginx_volume: ./nginx
+  nginx_volume:
   media_volume:
   static_volume:
