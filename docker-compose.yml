@@ -1,4 +1,15 @@
+version: "2"
 services:
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/app/staticfiles
+      - media_volume:/app/mediafiles
+    ports:
+      - "82:82"
 
   web:
     build: .
@@ -37,15 +48,6 @@ services:
     environment:
       SCHEDULE: '@daily'
       BACKUP_KEEP_DAYS: 14
-
-  nginx:
-    image: nginx:alpine
-    restart: always
-    volumes:
-      - static_volume:/app/staticfiles
-      - media_volume:/app/mediafiles
-    ports:
-      - "82:82"
 
 volumes:
   postgres_data:
