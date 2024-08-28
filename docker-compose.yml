@@ -4,7 +4,7 @@ services:
     build: .
     pull_policy: build
     restart: always
-    command: gunicorn dravenverse.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn dravenverse.wsgi:application --bind 0.0.0.0:8002
     env_file: stack.env
 
     volumes:
@@ -12,7 +12,7 @@ services:
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     ports:
-      - "8002:8000"
+      - "8002:8002"
     depends_on:
       - db
     working_dir: /app
@@ -26,9 +26,9 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     expose:
-      - "5433"
+      - "5435"
     ports:
-      - 5435:5433
+      - 5435:5435
 
   backup:
     image: eeshugerman/postgres-backup-s3:16
@@ -46,7 +46,7 @@ services:
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     ports:
-      - "82:80"
+      - "82:82"
 
 volumes:
   postgres_date:
